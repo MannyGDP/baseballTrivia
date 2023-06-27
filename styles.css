@@ -1,6 +1,7 @@
-.center {
+#submit {
     display: block;
+    margin-top: 450px;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 15%;
 }
