@@ -14,6 +14,9 @@ let questionBank = [
     "answer": 3
 }
 ];
+for (let i = 0; i < questionBank.length; i++) { 
+    text += questionBank[i] + "<br>";
+  }
         //  variable  array- value - array in that value exp.choices
 console.log(questionBank[0].choices[0])
 //  figure out how to link question with paragraph in index of ID base
