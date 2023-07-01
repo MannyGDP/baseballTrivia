@@ -45,15 +45,16 @@ let questionBank = [
   function collectAnswers() {
     selectedAnswers = [];
   
+    let userAnswer = 2; // Assuming the user selected the first option
+
     for (let i = 0; i < questionBank.length; i++) {
-      const selectedOption = document.querySelector(`input[name="question-${i}"]:checked`);
-      if (selectedOption) {
-        const answerIndex = parseInt(selectedOption.value);
-        selectedAnswers.push(answerIndex);
-      } else {
-        selectedAnswers.push(null);
-      }
+      const question = questionBank[i];
+      const isCorrect = userAnswer === question.answer;
+    
+      const resultMessage = isCorrect ? "Correct answer!" : "Back to the Dugout";
+      console.log(resultMessage);
     }
+    
   
     console.log(selectedAnswers);
   }
