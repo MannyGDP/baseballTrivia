@@ -1,24 +1,68 @@
 let questionBank = [
-{
-    // key     value   (object contains key valued pairs)
-    "base": "1st base",
-    "question": "What year were the Dodgers founded?",
-    "choices": ["1873", "1920", "1883", "1905"], 
-    "answer": 2
-},
-
-{
-    "base": "2nd base",
-    "question": "What year did the Dodgers move to Los Angeles?",
-    "choices": ["1909", "1926", "1948", "1958"],
-    "answer": 3
-}
-];
-for (let i = 0; i < questionBank.length; i++) { 
-    text += questionBank[i] + "<br>";
+    {
+      "base": "1st base",
+      "question": "What year were the Dodgers founded?",
+      "choices": ["1873", "1920", "1883", "1905"],
+      "answer": 2,
+      "position": 0,
+    },
+    {
+      "base": "2nd base",
+      "question": "What year did the Dodgers move to Los Angeles?",
+      "choices": ["1909", "1926", "1948", "1958"],
+      "answer": 3,
+      "position": 1,
+    },
+  ];
+  
+  const questionContainer = document.getElementById('question-container');
+  const submitButton = document.getElementById('submit-button');
+  let selectedAnswers = [];
+  
+  function displayQuestions() {
+    questionContainer.innerHTML = '';
+  
+    for (let i = 0; i < questionBank.length; i++) {
+      const currentQuestion = questionBank[i];
+      const questionText = currentQuestion.question;
+      const choices = currentQuestion.choices;
+  
+      const questionElement = document.createElement('div');
+      questionElement.innerHTML = `
+        <p>${questionText}</p>
+        ${choices.map((choice, index) => `
+          <label>
+            <input type="radio" name="question-${i}" value="${index}">
+            ${choice}
+          </label>
+        `).join('')}
+      `;
+  
+      questionContainer.appendChild(questionElement);
+    }
   }
-        //  variable  array- value - array in that value exp.choices
-console.log(questionBank[0].choices[0])
+  
+  function collectAnswers() {
+    selectedAnswers = [];
+  
+    for (let i = 0; i < questionBank.length; i++) {
+      const selectedOption = document.querySelector(`input[name="question-${i}"]:checked`);
+      if (selectedOption) {
+        const answerIndex = parseInt(selectedOption.value);
+        selectedAnswers.push(answerIndex);
+      } else {
+        selectedAnswers.push(null);
+      }
+    }
+  
+    console.log(selectedAnswers);
+  }
+  
+  submitButton.addEventListener('click', collectAnswers);
+  
+  displayQuestions();
+            //  variable  array- value - array in that value exp.choices
+// console.log(questionBank[0].choices[0])
 //  figure out how to link question with paragraph in index of ID base
 
 // 1. loop through question 1 choices and create an input for each choice
