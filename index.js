@@ -16,16 +16,16 @@ let questionBank = [
     },
     {
         "base": "3rd base",
-        "question": "What year did the Dodgers move to Los Angeles?",
-        "choices": ["1909", "1926", "1948", "1958"],
-        "answerIndex": 3,
+        "question": "Which Pitcher is regarded as the best Pitcher ever?",
+        "choices": ["Newcombe", "Koufax", "Valenzuela", "Kershaw"],
+        "answerIndex": 1,
         "position": 2,
     },
     {
         "base": "home plate",
-        "question": "What year did the Dodgers move to Los Angeles?",
-        "choices": ["1909", "1926", "1948", "1958"],
-        "answerIndex": 3,
+        "question": "How many World Series have the Dodgers won?",
+        "choices": ["9", "7", "2", "4"],
+        "answerIndex": 1,
         "position": 3,
     },
   ];
