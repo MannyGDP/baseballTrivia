@@ -1,17 +1,32 @@
 let questionBank = [
     {
+        // key = "base" : value = "1st base" : (the object contains key valued pairs)
       "base": "1st base",
       "question": "What year were the Dodgers founded?",
       "choices": ["1873", "1920", "1883", "1905"],
-      "answer": 2,
+      "answerIndex": 2,
       "position": 0,
     },
     {
       "base": "2nd base",
       "question": "What year did the Dodgers move to Los Angeles?",
       "choices": ["1909", "1926", "1948", "1958"],
-      "answer": 3,
+      "answerIndex": 3,
       "position": 1,
+    },
+    {
+        "base": "3rd base",
+        "question": "What year did the Dodgers move to Los Angeles?",
+        "choices": ["1909", "1926", "1948", "1958"],
+        "answerIndex": 3,
+        "position": 2,
+    },
+    {
+        "base": "home plate",
+        "question": "What year did the Dodgers move to Los Angeles?",
+        "choices": ["1909", "1926", "1948", "1958"],
+        "answerIndex": 3,
+        "position": 3,
     },
   ];
   
@@ -45,23 +60,37 @@ let questionBank = [
   function collectAnswers() {
     selectedAnswers = [];
   
-    let userAnswer = 2; // Assuming the user selected the first option
-
-    for (let i = 0; i < questionBank.length; i++) {
-      const question = questionBank[i];
-      const isCorrect = userAnswer === question.answer;
-    
-      const resultMessage = isCorrect ? "Correct answer!" : "Back to the Dugout";
-      console.log(resultMessage);
-    }
-    
+    const inputElements = document.querySelectorAll('input[type="radio"]:checked');
   
-    console.log(selectedAnswers);
+    inputElements.forEach((input) => {
+      const questionIndex = parseInt(input.name.split('-')[1]);
+      const selectedAnswerIndex = parseInt(input.value);
+      const question = questionBank[questionIndex];
+  
+      const isCorrect = selectedAnswerIndex === question.answerIndex;
+  
+      let resultMessage;
+      if (isCorrect) {
+        resultMessage = "Correct answer! Next Batter";
+      } else {
+        resultMessage = "Back to the Dugout";
+      }
+  
+      console.log(`Question ${questionIndex + 1}: ${question.question}`);
+      console.log(`Choices: ${question.choices.join(", ")}`);
+      console.log(`Answer: ${resultMessage}\n`);
+    });
   }
   
   submitButton.addEventListener('click', collectAnswers);
   
   displayQuestions();
+  
+  
+  submitButton.addEventListener('click', collectAnswers);
+  
+  displayQuestions();
+
             //  variable  array- value - array in that value exp.choices
 // console.log(questionBank[0].choices[0])
 //  figure out how to link question with paragraph in index of ID base
