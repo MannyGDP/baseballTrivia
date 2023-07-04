@@ -1,12 +1,14 @@
 body {
-    color: rgb(245, 237, 237);
+    color: rgb(174, 162, 162);
+    align-items: center;
 }
-
-
-#submit {
+/* submit {
     display: block;
     margin-top: 300px;
     margin-left: auto;
     margin-right: auto;
     width: 15%;
+} */
+menu {
+    align-content: right;
 }
