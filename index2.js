@@ -33,10 +33,29 @@ let questionBank = [
   const questionContainer = document.getElementById('question-container');
   const submitButton = document.getElementById('submit-button');
   let selectedAnswers = [];
-  
-  function displayQuestions() {
-    questionContainer.innerHTML = '';
-  
+  let currentQuestionIndex = 0;
+
+    function displayCurrentQuestion() {
+        questionContainer.innerHTML = '';
+      
+        const currentQuestion = questionBank[currentQuestionIndex];
+        const questionText = currentQuestion.question;
+        const choices = currentQuestion.choices;
+      
+        const questionElement = document.createElement('div');
+        questionElement.innerHTML = `
+          <p>${questionText}</p>
+          ${choices.map((choice, index) => `
+            <label>
+              <input type="radio" name="question-${currentQuestionIndex}" value="${index}">
+              ${choice}
+            </label>
+          `).join('')}
+        `;
+      
+        questionContainer.appendChild(questionElement);
+      }
+      
     for (let i = 0; i < questionBank.length; i++) {
       const currentQuestion = questionBank[i];
       const questionText = currentQuestion.question;
@@ -54,6 +73,15 @@ let questionBank = [
       `;
   
       questionContainer.appendChild(questionElement);
+    }
+  
+  function handleNextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questionBank.length) {
+      displayCurrentQuestion();
+    } else {
+      // All questions have been displayed, do something (e.g., show results)
+      collectAnswers();
     }
   }
   
@@ -84,12 +112,12 @@ let questionBank = [
   
   submitButton.addEventListener('click', collectAnswers);
   
-  displayQuestions();
+//   displayQuestions();
   
   
-  submitButton.addEventListener('click', collectAnswers);
+  submitButton.addEventListener('click', handleNextQuestion);
   
-  displayQuestions(1);
+  displayCurrentQuestion();
 
             //  variable  array- value - array in that value exp.choices
 // console.log(questionBank[0].choices[0])
