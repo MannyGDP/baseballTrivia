@@ -98,7 +98,7 @@ function collectAnswers() {
 
       // (handleNextQuestion(); )// Move to the next question
     } else {
-      resultMessage = "Incorrect answer! Back to the Index Page";
+      resultMessage = "Incorrect answer! Back to the Dugout";
       // window.location.href = 'indextest.html'; // Go back to index page
       submitButton.style.display = "none"
       setTimeout(function() {
