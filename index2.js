@@ -65,6 +65,7 @@ function displayCurrentQuestion() {
 function handleNextQuestion() {
   currentQuestionIndex++;
   if (currentQuestionIndex < questionBank.length) {
+    console.log("made it")
     displayCurrentQuestion();
   } else {
     // All questions have been displayed, go back to index page
@@ -85,19 +86,30 @@ function collectAnswers() {
     const isCorrect = selectedAnswerIndex === question.answerIndex;
 
     let resultMessage;
+    // if is correct show answer for 5sec : move to next question
     if (isCorrect) {
       resultMessage = "Correct answer! Next Batter";
-      handleNextQuestion(); // Move to the next question
+      submitButton.style.display = "none"
+      setTimeout(function() {
+        handleNextQuestion()
+        submitButton.style.display = "block"
+        }, 5000)
+
+
+      // (handleNextQuestion(); )// Move to the next question
     } else {
       resultMessage = "Incorrect answer! Back to the Index Page";
-      window.location.href = 'indextest.html'; // Go back to index page
+      // window.location.href = 'indextest.html'; // Go back to index page
+      submitButton.style.display = "none"
+      setTimeout(function() {
+        window.location.href = 'indextest.html'; // Go back to index page
+        }, 3000)
     }
 
     console.log(`Question ${questionIndex + 1}: ${question.question}`);
     console.log(`Choices: ${question.choices.join(", ")}`);
     console.log(`Answer: ${resultMessage}\n`);
 
-    // Display the result message on the page
     const resultElement = document.createElement('p');
     resultElement.textContent = resultMessage;
     questionContainer.appendChild(resultElement);
@@ -109,4 +121,4 @@ submitButton.addEventListener('click', collectAnswers);
 displayCurrentQuestion();
 
 // Call the `handleNextQuestion` function every 5 seconds (5000 milliseconds)
-intervalId = setInterval(handleNextQuestion, 5000);
+// intervalId = setInterval(handleNextQuestion, 15000);
