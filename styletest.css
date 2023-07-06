@@ -1,13 +1,13 @@
 html,
 body {
-    margin: 20;
+    margin: 10;
     padding: 0px;
     background-color: rgb(73, 74, 77);
     text-align: center;
     background-image: url("./assets/dodgerstadium.webp");
     background-size: auto;
     background-repeat: no-repeat;
-    background-position-y: -160px;
+    background-position-y: -130px;
     background-position-x: auto;
 
 }
